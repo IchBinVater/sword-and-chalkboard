@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthwave Homeschool Hub | Quest for Knowledge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  
+  <header>
+    <div class="logo">SYNTHWAVE ACADEMY</div>
+    <div class="tagline">Level Up Your Learning — Final Fantasy Style</div>
+    <div id="header-extra" style="margin-top:10px;"></div>
+  </header>
+
+  <div class="container">
+    <!-- Create Profile Screen -->
+    <div id="create-screen" class="screen">
+      <h2>Create Your Hero</h2>
+      <p style="margin:15px 0; text-align:center;">Choose a champion to embark on the quest of knowledge.</p>
+      
+      <div class="form-group">
+        <input type="text" id="hero-name" placeholder="Hero Name (e.g. Alex the Scholar)" maxlength="30">
+      </div>
+      
+      <div class="hero-select">
+        <div class="hero-card" data-hero="knight" onclick="selectHero('knight')">
+          <img src="assets/knight.jpg" alt="Knight">
+          <h3>Neon Knight</h3>
+        </div>
+        <div class="hero-card" data-hero="mage" onclick="selectHero('mage')">
+          <img src="assets/mage.jpg" alt="Mage">
+          <h3>Aether Mage</h3>
+        </div>
+        <div class="hero-card" data-hero="rogue" onclick="selectHero('rogue')">
+          <img src="assets/rogue.jpg" alt="Rogue">
+          <h3>Shadow Rogue</h3>
+        </div>
+        <div class="hero-card" data-hero="paladin" onclick="selectHero('paladin')">
+          <img src="assets/paladin.jpg" alt="Paladin">
+          <h3>Holy Paladin</h3>
+        </div>
+        <div class="hero-card" data-hero="archer" onclick="selectHero('archer')">
+          <img src="assets/archer.jpg" alt="Archer">
+          <h3>Grid Archer</h3>
+        </div>
+        <div class="hero-card" data-hero="bard" onclick="selectHero('bard')">
+          <img src="assets/bard.jpg" alt="Bard">
+          <h3>Melody Bard</h3>
+        </div>
+        <div class="hero-card" data-hero="summoner" onclick="selectHero('summoner')">
+          <img src="assets/summoner.jpg" alt="Summoner">
+          <h3>Crystal Summoner</h3>
+        </div>
+      </div>
+      
+      <div style="text-align:center; margin-top:20px;">
+        <button class="btn btn-primary" onclick="createProfile()">Begin Quest</button>
+      </div>
+    </div>
+
+    <!-- Select Profile Screen -->
+    <div id="select-profile-screen" class="screen">
+      <h2>Choose Your Hero</h2>
+      <div id="profile-list" class="profiles-bar" style="margin:20px 0;"></div>
+      <button class="btn" onclick="showScreen('create-screen')">Create New Hero</button>
+      <div style="margin-top:30px;">
+        <h3>Import Backup</h3>
+        <input type="file" id="import-file" accept=".json" onchange="importData()">
+      </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-screen" class="screen">
+      <div class="dashboard-grid">
+        <div class="hero-status">
+          <img id="hero-img" src="" alt="Hero">
+          <h2 id="hero-name-display">Hero</h2>
+          <p id="hero-class" style="color:var(--neon-pink); font-size:1.2rem;">Class</p>
+          <h3 style="margin:15px 0;">LEVEL <span id="level-display">1</span></h3>
+          <div class="xp-bar">
+            <div class="xp-fill" id="xp-fill"></div>
+          </div>
+          <p id="xp-text">0 / 100 XP</p>
+          <p style="margin-top:10px;">Lessons Completed: <strong id="completed-count">0</strong></p>
+        </div>
+        
+        <div>
+          <!-- Daily Quests -->
+          <h2>Daily Quests</h2>
+          <div id="daily-quests" class="lesson-list" style="margin-bottom:25px;"></div>
+
+          <!-- Lesson Planner -->
+          <h2>Lesson Planner</h2>
+          <div style="background:var(--bg-card); padding:20px; border-radius:10px; margin-bottom:20px; border:1px solid var(--neon-purple);">
+            <div class="form-group">
+              <select id="template-subject" onchange="loadTemplate()" style="margin-bottom:10px;">
+                <option value="">-- Load Subject Template --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" id="lesson-title" placeholder="Lesson Title (e.g. Fractions Quest)">
+            </div>
+            <div class="form-group">
+              <input type="text" id="lesson-subject" placeholder="Subject (Math, Science, Language Arts...)">
+            </div>
+            <div class="form-group">
+              <textarea id="lesson-desc" rows="2" placeholder="Description or notes"></textarea>
+            </div>
+            <div class="form-group" style="display:flex; gap:10px;">
+              <input type="number" id="lesson-xp" value="50" min="10" max="500" placeholder="XP Reward" style="flex:1;">
+              <select id="lesson-assign" style="flex:1;">
+                <option value="">Main Hero</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" onclick="addLesson()">Add Lesson to Quest</button>
+          </div>
+          
+          <h3>Active Quests</h3>
+          <div id="lesson-list" class="lesson-list"></div>
+
+          <!-- Party -->
+          <h2 style="margin-top:30px;">Party Members</h2>
+          <div style="background:var(--bg-card); padding:15px; border-radius:10px; margin-bottom:15px; border:1px solid var(--neon-cyan);">
+            <div style="display:flex; gap:10px; margin-bottom:10px;">
+              <input type="text" id="party-name" placeholder="Student name" style="flex:2;">
+              <select id="party-hero" style="flex:1;">
+                <option value="knight">Knight</option>
+                <option value="mage">Mage</option>
+                <option value="rogue">Rogue</option>
+                <option value="paladin">Paladin</option>
+                <option value="archer">Archer</option>
+                <option value="bard">Bard</option>
+                <option value="summoner">Summoner</option>
+              </select>
+              <button class="btn btn-primary" onclick="addPartyMember()">Add</button>
+            </div>
+            <div id="party-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Level Up Modal -->
+  <div id="level-up-modal" class="level-up-modal">
+    <div class="level-up-content">
+      <h1 style="font-size:3rem; color:var(--neon-cyan);">LEVEL UP!</h1>
+      <p id="level-up-text" style="font-size:2rem; margin:20px 0; color:var(--neon-pink);">LEVEL 2!</p>
+      <p>Your knowledge grows stronger!</p>
+      <button class="btn btn-primary" style="margin-top:20px;" onclick="closeLevelUp()">Continue the Quest</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
