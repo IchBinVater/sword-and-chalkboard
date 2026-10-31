@@ -2,18 +2,20 @@
 
 A retro Final Fantasy-inspired, synthwave dark-mode web app for homeschooling.
 
-## New in v2
-- **7 hero options** (Knight, Mage, Rogue, Paladin, Archer, Bard, Summoner)
-- **Subject templates** — one-click load of sample lessons for Math, Language Arts, Science, History, Art/Music
-- **Daily Quests** — rotating daily tasks for bonus XP
-- **Party system** — add multiple students to one profile and assign lessons to specific party members
-- **Export / Import** — download a JSON backup of all progress, or import it later
-- Slightly steeper XP curve and toast notifications for better feedback
+## New in this update
+- **Retro pixel sprites** for all 7 heroes (used in the game and as visual references)
+- **Side-scrolling Auto-Battler Roguelite** accessible via the "INSERT COIN" button on the dashboard
+  - Auto-attacks enemies that approach from the right
+  - Waves of increasing difficulty
+  - After each wave, choose 1 of 3 random upgrades (damage, speed, HP, range, crit, etc.)
+  - Game over when HP reaches 0; score based on enemies defeated and waves cleared
+  - Uses your selected hero's sprite
 
 ## Features
 - Create multiple hero profiles
 - Scalable lesson planner with XP rewards
 - Progress tracking and leveling system with level-up celebrations
+- Daily quests, party system, subject templates, export/import
 - All data stored locally in your browser (localStorage)
 - Fully offline once loaded
 

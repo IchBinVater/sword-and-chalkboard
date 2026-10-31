@@ -303,3 +303,27 @@ input:focus, select:focus, textarea:focus {
   z-index: 999;
   opacity: 0.3;
 }
+
+.upgrade-card {
+  background: var(--bg-card);
+  border: 2px solid var(--neon-cyan);
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 180px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.upgrade-card:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 20px var(--neon-pink);
+  transform: scale(1.05);
+}
+
+.upgrade-card h3 {
+  color: var(--neon-cyan);
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+

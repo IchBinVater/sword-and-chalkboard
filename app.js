@@ -2,13 +2,13 @@
 // Features: More heroes, subject templates, daily quests, party system, export/import
 
 const HEROES = [
-  { id: 'knight', name: 'Neon Knight', img: 'assets/knight.jpg', class: 'Knight' },
-  { id: 'mage', name: 'Aether Mage', img: 'assets/mage.jpg', class: 'Mage' },
-  { id: 'rogue', name: 'Shadow Rogue', img: 'assets/rogue.jpg', class: 'Rogue' },
-  { id: 'paladin', name: 'Holy Paladin', img: 'assets/paladin.jpg', class: 'Paladin' },
-  { id: 'archer', name: 'Grid Archer', img: 'assets/archer.jpg', class: 'Archer' },
-  { id: 'bard', name: 'Melody Bard', img: 'assets/bard.jpg', class: 'Bard' },
-  { id: 'summoner', name: 'Crystal Summoner', img: 'assets/summoner.jpg', class: 'Summoner' }
+  { id: 'knight', name: 'Neon Knight', img: 'assets/knight.jpg', sprite: 'assets/sprites/knight.png', class: 'Knight' },
+  { id: 'mage', name: 'Aether Mage', img: 'assets/mage.jpg', sprite: 'assets/sprites/mage.png', class: 'Mage' },
+  { id: 'rogue', name: 'Shadow Rogue', img: 'assets/rogue.jpg', sprite: 'assets/sprites/rogue.png', class: 'Rogue' },
+  { id: 'paladin', name: 'Holy Paladin', img: 'assets/paladin.jpg', sprite: 'assets/sprites/paladin.png', class: 'Paladin' },
+  { id: 'archer', name: 'Grid Archer', img: 'assets/archer.jpg', sprite: 'assets/sprites/archer.png', class: 'Archer' },
+  { id: 'bard', name: 'Melody Bard', img: 'assets/bard.jpg', sprite: 'assets/sprites/bard.png', class: 'Bard' },
+  { id: 'summoner', name: 'Crystal Summoner', img: 'assets/summoner.jpg', sprite: 'assets/sprites/summoner.png', class: 'Summoner' }
 ];
 
 const SUBJECT_TEMPLATES = {
